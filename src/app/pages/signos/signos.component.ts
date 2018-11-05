@@ -1,6 +1,9 @@
+
+
+
 import { Signos } from './../../_model/signos';
 import { SignosService } from './../../_service/signos.service';
-import { MatTableDataSource, MatSnackBar, MatPaginator, MatSort } from '@angular/material';
+import { MatTableDataSource, MatSnackBar, MatPaginator, MatSort, MatDialog } from '@angular/material';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -16,7 +19,7 @@ export class SignosComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   cantidad: number;
 
-  constructor(private signosService: SignosService, private snackBar: MatSnackBar) { }
+  constructor(private signosService: SignosService, private snackBar: MatSnackBar,private dialog: MatDialog) { }
 
   ngOnInit() {
 
@@ -70,5 +73,14 @@ export class SignosComponent implements OnInit {
     this.dataSource.sort = this.sort;
     });
   }
-
+ 
+  openDialog(signos: Signos){
+    let med = signos != null ? signos : new Signos();
+     
+    this.dialog.open(SignosModalComponent, {
+      width: '450px',
+      disableClose: true,
+      data: med
+    })
+  }
 }

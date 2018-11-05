@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MAT_DATE_LOCALE, MatProgressBarModule, MatAutocompleteModule, MatExpansionModule, MatListModule, MatNativeDateModule, MatDatepickerModule, MatSelectModule, MatSortModule, MatDialogModule, MatSnackBarModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatMenuModule, MatDividerModule, MatInputModule, MatTableModule, MatPaginatorModule, MatCardModule, MatPaginatorIntl } from '@angular/material';
+import { MAT_DATE_LOCALE, MatProgressBarModule, MatAutocompleteModule, MatExpansionModule, MatListModule, MatNativeDateModule, MatDatepickerModule, MatSelectModule, MatSortModule, MatDialogModule, MatSnackBarModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatMenuModule, MatDividerModule, MatInputModule, MatTableModule, MatPaginatorModule, MatCardModule, MatPaginatorIntl, MatGridListModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -50,7 +50,8 @@ import { MAT_DATE_LOCALE, MatProgressBarModule, MatAutocompleteModule, MatExpans
     MatListModule,
     MatExpansionModule,
     MatAutocompleteModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatGridListModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useClass: MatPaginatorImpl },

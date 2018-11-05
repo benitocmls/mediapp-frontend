@@ -1,3 +1,4 @@
+
 import { ServerErrorsInterceptor } from './_shared/server-errors.interceptor';
 import { MaterialModule } from './material/material.module';
 import { BrowserModule } from '@angular/platform-browser';
@@ -27,6 +28,10 @@ import { TokenComponent } from './login/recuperar/token/token.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SignosComponent } from './pages/signos/signos.component';
 
+import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
+
+import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edicion.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +39,7 @@ import { SignosComponent } from './pages/signos/signos.component';
     PacienteEdicionComponent,
     MedicoComponent,
     DialogoComponent,
+  
     ExamenComponent,
     ExamenEdicionComponent,
     EspecialidadComponent,
@@ -48,9 +54,12 @@ import { SignosComponent } from './pages/signos/signos.component';
     RecuperarComponent,
     TokenComponent,
     PerfilComponent,
-    SignosComponent
+    SignosComponent,    
+    PacientesDialogComponent
+    
+    
   ],
-  entryComponents: [DialogoComponent, DialogoDetalleComponent],
+  entryComponents: [DialogoComponent, DialogoDetalleComponent,PacientesDialogComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,3 +1,7 @@
+import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edicion.component';
+import { SignosDialogComponent } from './pages/signos/signos-dialog/signos-dialog.component';
+import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
+import { DialogoComponent } from './pages/medico/dialogo/dialogo.component';
 import { SignosComponent } from './pages/signos/signos.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
@@ -47,7 +51,14 @@ const routes: Routes = [
   { path: 'not-403', component: Not403Component },
   { path: 'recuperar', component: RecuperarComponent },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'signos', component: SignosComponent },
+  { path: 'signos', component: SignosComponent, canActivate: [GuardService],
+ 
+  children: [                          //<---- child components declared here
+    { path: 'nuevo', component: SignosEdicionComponent },
+    { path: 'edicion/:id', component: SignosEdicionComponent }
+    ]
+
+  },
   {
     path: 'recuperar', component: RecuperarComponent, children: [
         { path: ':token', component: TokenComponent }

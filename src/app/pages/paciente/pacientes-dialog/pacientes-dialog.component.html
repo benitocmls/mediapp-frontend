@@ -1,0 +1,27 @@
+<form class="example-container" [formGroup]="form" #pacienteForm="ngForm">
+<div class="example-container">
+    <div [hidden]="true">
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="ID"  formControlName="id">
+        </mat-form-field>
+      </div>
+  <mat-form-field>
+    <input matInput placeholder="Nombres" formControlName="nombres" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Apellidos" formControlName="apellidos" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="DNI" formControlName="dni" type="number" maxlength="8">
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Direccion" formControlName="direccion" required>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput placeholder="Telefono" formControlName="telefono" required>
+  </mat-form-field>
+  
+</div>
+</form>
+<button mat-raised-button color="primary" (click) = "operar()" [disabled]="pacienteForm.invalid">Aceptar</button>
+<button mat-raised-button color="accent" (click) = "cancelar()" type="button">Cancelar</button>

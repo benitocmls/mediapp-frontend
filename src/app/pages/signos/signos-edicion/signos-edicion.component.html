@@ -1,0 +1,49 @@
+<h2 mat-dialog-title> Signos Vitales </h2>
+<form class="example-container" [formGroup]="form" (ngSubmit)="operar()" #consultaForm="ngForm">
+  <div class="example-container">
+    
+     
+        <mat-form-field>
+          <input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [formControl]="myControlPaciente" formControlName="paciente">
+          <mat-autocomplete #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)">
+            <mat-option *ngFor="let p of filteredOptions | async" [value]="p">
+              {{ p.nombres }} {{p.apellidos}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+     
+          
+        <button mat-button color="primary" (click)="openDialog()" type="button">Crear Paciente</button>
+     
+      
+        <div [hidden]="true">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder="ID" required formControlName="idSignos" [(ngModel)]="signos.idSignos">
+            </mat-form-field>
+        </div>
+        
+        <mat-form-field>
+          <input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" formControlName="fecha" [(ngModel)]="signos.fecha">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      
+        <mat-form-field>
+          <input matInput placeholder="Temperatura" [(ngModel)]="signos.temperatura" formControlName="temperatura" maxlength="3" required>
+        </mat-form-field>
+         
+             
+ 
+        <mat-form-field>
+          <input matInput placeholder="Pulso" [(ngModel)]="signos.pulso" formControlName="pulso" maxlength="3" required>
+        </mat-form-field>
+     
+        <mat-form-field>
+          <input matInput placeholder="Ritmo respiratorio" [(ngModel)]="signos.ritmoRespiratorio" formControlName="ritmoRespiratorio" maxlength="3" required>
+        </mat-form-field>
+     
+  </div>
+  <button mat-raised-button color="primary" type="submit" [disabled]="consultaForm.invalid">Aceptar</button>
+  <button mat-raised-button color="accent" routerLink='/signos' type="button">Cancelar</button>
+
+</form>
