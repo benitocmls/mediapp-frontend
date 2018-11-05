@@ -1,5 +1,5 @@
 import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edicion.component';
-import { SignosDialogComponent } from './pages/signos/signos-dialog/signos-dialog.component';
+// import { SignosDialogComponent } from './pages/signos/signos-dialog/signos-dialog.component';
 import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
 import { DialogoComponent } from './pages/medico/dialogo/dialogo.component';
 import { SignosComponent } from './pages/signos/signos.component';
@@ -51,6 +51,7 @@ const routes: Routes = [
   { path: 'not-403', component: Not403Component },
   { path: 'recuperar', component: RecuperarComponent },
   { path: 'perfil', component: PerfilComponent },
+  { path: 'signos2', component: SignosComponent, canActivate: [GuardService] },
   { path: 'signos', component: SignosComponent, canActivate: [GuardService],
  
   children: [                          //<---- child components declared here

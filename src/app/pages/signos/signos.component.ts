@@ -1,3 +1,4 @@
+import { SignosEdicionComponent } from './../../../../../../mediapp-frontend/src/app/pages/signos/signos-edicion/signos-edicion.component';
 
 
 
@@ -77,7 +78,7 @@ export class SignosComponent implements OnInit {
   openDialog(signos: Signos){
     let med = signos != null ? signos : new Signos();
      
-    this.dialog.open(SignosModalComponent, {
+    this.dialog.open(SignosEdicionComponent, {
       width: '450px',
       disableClose: true,
       data: med

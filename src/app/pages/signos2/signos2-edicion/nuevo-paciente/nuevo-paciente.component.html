@@ -1,0 +1,55 @@
+<mat-toolbar>
+	<span>Nuevo paciente</span>
+	<span class="fill-remaining-space"></span>
+	<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+<br>
+<div class="example-container">
+	<mat-grid-list cols="2" rowHeight="2:0.4">
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Nombres" [(ngModel)]="paciente.nombres">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Apellidos" [(ngModel)]="paciente.apellidos">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="DNI" [(ngModel)]="paciente.dni">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Teléfono" [(ngModel)]="paciente.telefono">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile colspan="2" rowspan="1">
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Direccion" [(ngModel)]="paciente.direccion">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile colspan="2" rowspan="1">
+			<div class="controles-container">
+				<button mat-raised-button color="primary" (click)="operar()" [mat-dialog-close]="paciente.nombres">Aceptar</button>
+			</div>
+		</mat-grid-tile>
+		<mat-grid-tile colspan="2" rowspan="1" >
+			<div class="controles-container">
+				<button mat-raised-button color="accent" (click)="onClose()">Cancelar</button>
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>

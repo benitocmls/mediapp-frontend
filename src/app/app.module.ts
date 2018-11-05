@@ -1,3 +1,5 @@
+import { NuevoPacienteComponent } from './pages/signos2/signos2-edicion/nuevo-paciente/nuevo-paciente.component';
+import { Signos2EdicionComponent } from './pages/signos2/signos2-edicion/signos2-edicion.component';
 
 import { ServerErrorsInterceptor } from './_shared/server-errors.interceptor';
 import { MaterialModule } from './material/material.module';
@@ -27,6 +29,7 @@ import { RecuperarComponent } from './login/recuperar/recuperar.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
 import { SignosComponent } from './pages/signos/signos.component';
+import { Signos2Component } from './pages/signos2/signos2.component';
 
 import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
 
@@ -55,11 +58,14 @@ import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edi
     TokenComponent,
     PerfilComponent,
     SignosComponent,    
+    Signos2Component,
+    Signos2EdicionComponent,
+    NuevoPacienteComponent,
     PacientesDialogComponent
     
     
   ],
-  entryComponents: [DialogoComponent, DialogoDetalleComponent,PacientesDialogComponent],
+  entryComponents: [DialogoComponent, DialogoDetalleComponent,PacientesDialogComponent, Signos2EdicionComponent, NuevoPacienteComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

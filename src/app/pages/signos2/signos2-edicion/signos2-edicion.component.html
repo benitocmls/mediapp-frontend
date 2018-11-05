@@ -1,0 +1,71 @@
+<mat-toolbar>
+	<span>Signos Vitales</span>
+	<span class="fill-remaining-space"></span>
+	<button class="btn-dialog-close" mat-stroked-button (click)="onClose()" tabIndex="-1"><mat-icon>clear</mat-icon></button>
+</mat-toolbar>
+
+<div class="example-container">
+	<mat-grid-list cols="2" rowHeight="2:0.4">
+		<mat-grid-tile colspan="2" rowspan="1" >
+			<form class="controles-container" [formGroup]="form" (ngSubmit)="aceptar()" #consultaForm="ngForm">
+				<div class="controles-container paciente-grid">
+					<mat-form-field>
+						<input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [ngModel]="signos?.paciente" [formControl]="myControlPaciente" formControlName="paciente" (keyup)="highlightFirstOption($event)" >
+						<mat-icon matSuffix (click)="agregarPaciente()" class="cursor-mat-icon" matTooltip="Nuevo Paciente">add_circle_outline</mat-icon>
+						<mat-autocomplete autoActiveFirstOption #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)" (onSelectionChange)="seleccionarPaciente($event)">
+							<mat-option *ngFor="let p of filteredOptions | async" [value]="p">
+								{{ p.nombres }} {{p.apellidos}}
+							</mat-option>
+						</mat-autocomplete>									
+					</mat-form-field>
+				</div>
+			</form>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha" [value]="signos.fecha" (click)="picker.open()" [(ngModel)]="signos.fecha">
+					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Temperatura" [(ngModel)]="signos.temperatura">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Pulso" [(ngModel)]="signos.pulso">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<mat-form-field>
+					<input matInput placeholder="Ritmo" [(ngModel)]="signos.ritmoRespiratorio">
+				</mat-form-field>
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+			</div>
+		</mat-grid-tile>
+
+		<mat-grid-tile>
+			<div class="controles-container">
+				<button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
+			</div>
+		</mat-grid-tile>
+	</mat-grid-list>
+</div>

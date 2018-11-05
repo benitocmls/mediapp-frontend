@@ -2,7 +2,7 @@ import { PacientesDialogComponent } from './../../paciente/pacientes-dialog/paci
 import { Router, Params, ActivatedRoute } from '@angular/router';
 import { SignosService } from './../../../_service/signos.service';
 import { PacienteService } from './../../../_service/paciente.service';
-import { SignosDialogComponent } from './../signos-dialog/signos-dialog.component';
+// import { SignosDialogComponent } from './../signos-dialog/signos-dialog.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { Signos } from './../../../_model/signos';
@@ -41,6 +41,10 @@ export class SignosEdicionComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.pacienteService.pacienteCambio.subscribe(data => {
+			this.listarPacientes();	
+		});
+
     console.log("signos "+this.signos);
     if(this.signos==undefined)
     this.signos = new Signos();
