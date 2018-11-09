@@ -28,12 +28,11 @@ import { Not403Component } from './pages/not403/not403.component';
 import { RecuperarComponent } from './login/recuperar/recuperar.component';
 import { TokenComponent } from './login/recuperar/token/token.component';
 import { PerfilComponent } from './pages/perfil/perfil.component';
-import { SignosComponent } from './pages/signos/signos.component';
+ 
 import { Signos2Component } from './pages/signos2/signos2.component';
 
 import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
-
-import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edicion.component';
+ 
 
 @NgModule({
   declarations: [
@@ -57,7 +56,7 @@ import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edi
     RecuperarComponent,
     TokenComponent,
     PerfilComponent,
-    SignosComponent,    
+    
     Signos2Component,
     Signos2EdicionComponent,
     NuevoPacienteComponent,

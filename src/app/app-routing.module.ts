@@ -1,4 +1,5 @@
-import { SignosEdicionComponent } from './pages/signos/signos-edicion/signos-edicion.component';
+import { Signos2Component } from './pages/signos2/signos2.component';
+import { Signos2EdicionComponent } from './pages/signos2/signos2-edicion/signos2-edicion.component';
 // import { SignosDialogComponent } from './pages/signos/signos-dialog/signos-dialog.component';
 import { PacientesDialogComponent } from './pages/paciente/pacientes-dialog/pacientes-dialog.component';
 import { DialogoComponent } from './pages/medico/dialogo/dialogo.component';
@@ -51,12 +52,12 @@ const routes: Routes = [
   { path: 'not-403', component: Not403Component },
   { path: 'recuperar', component: RecuperarComponent },
   { path: 'perfil', component: PerfilComponent },
-  { path: 'signos2', component: SignosComponent, canActivate: [GuardService] },
-  { path: 'signos', component: SignosComponent, canActivate: [GuardService],
+  { path: 'signos', component: Signos2Component, canActivate: [GuardService],
+  
  
   children: [                          //<---- child components declared here
-    { path: 'nuevo', component: SignosEdicionComponent },
-    { path: 'edicion/:id', component: SignosEdicionComponent }
+    { path: 'nuevo', component: Signos2EdicionComponent },
+    { path: 'edicion/:id', component: Signos2EdicionComponent }
     ]
 
   },

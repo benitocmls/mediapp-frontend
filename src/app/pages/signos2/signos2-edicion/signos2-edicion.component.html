@@ -10,7 +10,7 @@
 			<form class="controles-container" [formGroup]="form" (ngSubmit)="aceptar()" #consultaForm="ngForm">
 				<div class="controles-container paciente-grid">
 					<mat-form-field>
-						<input type="text" placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [ngModel]="signos?.paciente" [formControl]="myControlPaciente" formControlName="paciente" (keyup)="highlightFirstOption($event)" >
+						<input type="text"  placeholder="Paciente" #pacienteNuevoModel="ngModel"matInput [matAutocomplete]="autoPaciente" [ngModel]="signos?.paciente" [formControl]="myControlPaciente" formControlName="paciente" (keyup)="highlightFirstOption($event)" >
 						<mat-icon matSuffix (click)="agregarPaciente()" class="cursor-mat-icon" matTooltip="Nuevo Paciente">add_circle_outline</mat-icon>
 						<mat-autocomplete autoActiveFirstOption #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)" (onSelectionChange)="seleccionarPaciente($event)">
 							<mat-option *ngFor="let p of filteredOptions | async" [value]="p">
@@ -19,52 +19,67 @@
 						</mat-autocomplete>									
 					</mat-form-field>
 				</div>
+				<small [hidden]="pacienteNuevoModel.valid || (pacienteNuevoModel.pristine)" >
+					Nombre es requerido is requerido.
+				</small>
 			</form>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput [matDatepicker]="picker" placeholder="Escoge una fecha" [max]="maxFecha" [value]="signos.fecha" (click)="picker.open()" [(ngModel)]="signos.fecha">
+					<input matInput [matDatepicker]="picker" #fecha="ngModel" placeholder="Escoge una fecha" [max]="maxFecha" [value]="signos.fecha" (click)="picker.open()" [(ngModel)]="signos.fecha">
 					<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
 					<mat-datepicker #picker></mat-datepicker>
 				</mat-form-field>
 			</div>
+			<small [hidden]="fecha.valid || (fecha.pristine)" >
+				Fecha is requerido.
+			</small>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Temperatura" [(ngModel)]="signos.temperatura">
+					<input matInput placeholder="Temperatura"  #temperatura="ngModel" minlength="1"  [(ngModel)]="signos.temperatura" required >
 				</mat-form-field>
 			</div>
+			<small [hidden]="temperatura.valid || (temperatura.pristine)" >
+				Temperatura is requerido.
+			</small>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Pulso" [(ngModel)]="signos.pulso">
+					<input matInput placeholder="Pulso" #pulso="ngModel" minlength="1" [(ngModel)]="signos.pulso" required>
 				</mat-form-field>
 			</div>
+			<small [hidden]="pulso.valid || (pulso.pristine)" >
+				Pulso is requerido.
+			</small>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Ritmo" [(ngModel)]="signos.ritmoRespiratorio">
+					<input matInput placeholder="Ritmo"  #ritmo="ngModel" minlength="1" [(ngModel)]="signos.ritmoRespiratorio" required>
 				</mat-form-field>
 			</div>
+			<small [hidden]="ritmo.valid || (ritmo.pristine)" >
+				Pulso is requerido.
+			</small>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
-				<button mat-raised-button color="primary" (click)="operar()">Aceptar</button>
+				<button mat-raised-button color="primary" [disabled]="!pacienteNuevoModel.valid || (pacienteNuevoModel.pristine )"  (click)="operar()">Aceptar</button>
 			</div>
 		</mat-grid-tile>
 
 		<mat-grid-tile>
 			<div class="controles-container">
-				<button mat-raised-button color="accent" (click)="cancelar()">Cancelar</button>
+				<button mat-raised-button color="accent"  (click)="cancelar()">Cancelar</button>
 			</div>
 		</mat-grid-tile>
 	</mat-grid-list>

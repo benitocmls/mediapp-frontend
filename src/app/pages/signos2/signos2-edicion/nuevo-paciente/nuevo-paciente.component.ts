@@ -26,13 +26,14 @@ export class NuevoPacienteComponent implements OnInit {
 	operar() {
 		if (this.paciente != null) {
 			this.pacienteService.registrar(this.paciente).subscribe(data => {
-				this.pacienteService.listar().subscribe(pacientes => {
-					this.pacienteService.pacienteCambio.next(pacientes);
-					this.pacienteService.mensajeCambio.next('Se registró');
-				});
+				 
 				// console.log(this.paciente.nombres);
 				// this.onClose();
-				this.dialogRef.close(this.paciente);
+				let pacienteNuevo:any;
+				pacienteNuevo=data;
+				 
+				this.pacienteService.mensajeCambio.next('Se registró');
+				this.dialogRef.close(pacienteNuevo.code);
 			});
 		}		
 	}

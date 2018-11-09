@@ -9,41 +9,57 @@
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Nombres" [(ngModel)]="paciente.nombres">
+					<input matInput #nombres="ngModel" minlength="1" placeholder="Nombres" [(ngModel)]="paciente.nombres" required>
 				</mat-form-field>
+				<small [hidden]="nombres.valid || (nombres.pristine)" >
+					Dni is requerido.
+				</small>
 			</div>
 		</mat-grid-tile>
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Apellidos" [(ngModel)]="paciente.apellidos">
+					<input matInput #apellidos="ngModel" minlength="1" placeholder="Apellidos" [(ngModel)]="paciente.apellidos" required>
 				</mat-form-field>
+				<small [hidden]="apellidos.valid || (apellidos.pristine)" >
+					Apellidos is requerido.
+				</small>
 			</div>
 		</mat-grid-tile>
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="DNI" [(ngModel)]="paciente.dni">
+					<input minlength="8"  maxlength="8" name="dni" #dni="ngModel" matInput placeholder="DNI" [(ngModel)]="paciente.dni" required>
 				</mat-form-field>
 			</div>
+			
+		  <small [hidden]="dni.valid || (dni.pristine )" >
+			Dni is requerido (minimo 8 numeros).
+		</small>
 		</mat-grid-tile>
 		<mat-grid-tile>
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Teléfono" [(ngModel)]="paciente.telefono">
+					<input matInput minlength="1" name="telefono" #telefono="ngModel" maxlength="12" placeholder="Teléfono" [(ngModel)]="paciente.telefono" required>
 				</mat-form-field>
 			</div>
+			<small [hidden]="telefono.valid || (telefono.pristine)" >
+				Telefono is requerido (Máximo 12 numeros).
+			</small>
 		</mat-grid-tile>
 		<mat-grid-tile colspan="2" rowspan="1">
 			<div class="controles-container">
 				<mat-form-field>
-					<input matInput placeholder="Direccion" [(ngModel)]="paciente.direccion">
+					<input matInput placeholder="Direccion" minlength="1" #direccion="ngModel" [(ngModel)]="paciente.direccion" required>
 				</mat-form-field>
 			</div>
+			<small [hidden]="direccion.valid || (direccion.pristine)" >
+				Direccion is requerido.
+			</small>
 		</mat-grid-tile>
 		<mat-grid-tile colspan="2" rowspan="1">
 			<div class="controles-container">
-				<button mat-raised-button color="primary" (click)="operar()" [mat-dialog-close]="paciente.nombres">Aceptar</button>
+				<button mat-raised-button color="primary" (click)="operar()" [disabled]="!dni.valid || (dni.pristine ) || !apellidos.valid || (apellidos.pristine ) || !nombres.valid || (nombres.pristine ) || !telefono.valid || (telefono.pristine ) || !direccion.valid || (direccion.pristine )"  [mat-dialog-close]="paciente.nombres">Aceptar</button>
 			</div>
 		</mat-grid-tile>
 		<mat-grid-tile colspan="2" rowspan="1" >

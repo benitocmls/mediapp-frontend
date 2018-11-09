@@ -43,7 +43,7 @@ export class Signos2EdicionComponent implements OnInit {
 	constructor(private builder: FormBuilder, private dialogRef: MatDialogRef<Signos2EdicionComponent>, @Inject(MAT_DIALOG_DATA) public data: Signos, private pacienteService: PacienteService, private signosService: SignosService, public snackBar: MatSnackBar, private dialog: MatDialog) { 
 		this.form = builder.group({
 			'paciente': this.myControlPaciente,
-			'idSigno': new FormControl(this.data.idSignos),
+			'idSignos': new FormControl(this.data.idSignos),
 			'fecha': new FormControl(new Date(this.data.fecha)).value,
 			'temperatura': new FormControl(this.data.temperatura),
 			'pulso': new FormControl(this.data.pulso),
@@ -113,7 +113,7 @@ export class Signos2EdicionComponent implements OnInit {
 	}
 
 	filter(val: any) {
-		this.myControlPaciente.setValue = this.trigger.activeOption.value;
+		 
 		if (val != null && val.idPaciente > 0) {
 			console.log('IF');
 		  	return this.pacientes.filter(option =>
@@ -164,25 +164,32 @@ export class Signos2EdicionComponent implements OnInit {
 		dialogPaciente.afterClosed().subscribe(result => {
 			// console.log(result);
 			this.listarPacientes();
-			this.signos.paciente = result;
+			let pacienteNuevo:any;
+			pacienteNuevo = result;
+			console.log("pacienteNuevo.idSignos "+pacienteNuevo);
+			this.pacienteService.listarPacientePorId(pacienteNuevo).subscribe(data => {
+				this.myControlPaciente.setValue(data);
+				this.signos.paciente=data;
+			  });
 		});
+		
 	}
 
 	highlightFirstOption(event): void {
-		console.log(this.trigger.activeOption.value);
+		
 		console.log(this.myControlPaciente.value);
 		console.log(this.pacientes.indexOf(this.myControlPaciente.value));
-		this.myControlPaciente.setValue = this.trigger.activeOption.value;
+		 
 		if (event.key == "ArrowDown" || event.key == "ArrowUp") {
 			return;
 		}
 		this.matAutocomplete._keyManager.setFirstItemActive();
-		// this.seleccionarPaciente(event);
+		//this.seleccionarPaciente(event);
 		// console.log('LO USA-2');
 	}
 
 	validateChoise() {
-		console.log(this.trigger.activeOption.value);
+		 
 		console.log(this.myControlPaciente.value);
 		console.log(this.pacientes.indexOf(this.myControlPaciente.value));
 	}
