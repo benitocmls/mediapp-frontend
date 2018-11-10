@@ -10,7 +10,7 @@
 			<form class="controles-container" [formGroup]="form" (ngSubmit)="aceptar()" #consultaForm="ngForm">
 				<div class="controles-container paciente-grid">
 					<mat-form-field>
-						<input type="text"  placeholder="Paciente" #pacienteNuevoModel="ngModel"matInput [matAutocomplete]="autoPaciente" [ngModel]="signos?.paciente" [formControl]="myControlPaciente" formControlName="paciente" (keyup)="highlightFirstOption($event)" >
+						<input type="text"  placeholder="Paciente" matInput [matAutocomplete]="autoPaciente" [ngModel]="signos?.paciente" [formControl]="myControlPaciente" formControlName="paciente" (keyup)="highlightFirstOption($event)" >
 						<mat-icon matSuffix (click)="agregarPaciente()" class="cursor-mat-icon" matTooltip="Nuevo Paciente">add_circle_outline</mat-icon>
 						<mat-autocomplete autoActiveFirstOption #autoPaciente="matAutocomplete" [displayWith]="displayFn" (optionSelected)="seleccionarPaciente($event)" (onSelectionChange)="seleccionarPaciente($event)">
 							<mat-option *ngFor="let p of filteredOptions | async" [value]="p">
@@ -19,9 +19,7 @@
 						</mat-autocomplete>									
 					</mat-form-field>
 				</div>
-				<small [hidden]="pacienteNuevoModel.valid || (pacienteNuevoModel.pristine)" >
-					Nombre es requerido is requerido.
-				</small>
+				
 			</form>
 		</mat-grid-tile>
 
@@ -73,7 +71,7 @@
 
 		<mat-grid-tile>
 			<div class="controles-container">
-				<button mat-raised-button color="primary" [disabled]="!pacienteNuevoModel.valid || (pacienteNuevoModel.pristine )"  (click)="operar()">Aceptar</button>
+				<button mat-raised-button color="primary"   (click)="operar()">Aceptar</button>
 			</div>
 		</mat-grid-tile>
 
